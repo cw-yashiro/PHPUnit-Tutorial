@@ -1,4 +1,6 @@
 <?php
+namespace UserName;
+
 final class UserName
 {
     protected string $username;
@@ -12,7 +14,12 @@ final class UserName
     {
         return $this->username;
     }
-}
 
-$username = new UserName('yashiro ryo');
-echo $username->asString()."\n";
+    public function throwExpectionForTest()
+    {
+        if($this->username === 'yashiro')
+        {
+            UserNameExpection::raiseExpectionUserNameInvalid(UserNameExpection::MSG_NOT_YASHIRO);
+        }
+    }
+}
